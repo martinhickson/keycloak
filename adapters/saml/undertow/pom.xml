@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-saml-adapter-core</artifactId>
+            <artifactId>keycloak-saml-adapter-core-jakarta</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -67,18 +67,20 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-servlet</artifactId>
+            <version>${undertow-jakarta.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
+            <version>${undertow-jakarta.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

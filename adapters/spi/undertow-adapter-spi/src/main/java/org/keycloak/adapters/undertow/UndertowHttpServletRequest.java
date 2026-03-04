@@ -17,10 +17,10 @@
 
 package org.keycloak.adapters.undertow;
 
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -35,6 +35,25 @@ public class UndertowHttpServletRequest {
                     @Override
                     public int read() throws IOException {
                         return inputStream.read();
+                    }
+
+                    @Override
+                    public boolean isFinished() {
+                        try {
+                            return inputStream.available() == 0;
+                        } catch (IOException e) {
+                            return true;
+                        }
+                    }
+
+                    @Override
+                    public boolean isReady() {
+                        return true;
+                    }
+
+                    @Override
+                    public void setReadListener(jakarta.servlet.ReadListener readListener) {
+                        throw new UnsupportedOperationException("Async read listener is not supported");
                     }
                 };
             }
